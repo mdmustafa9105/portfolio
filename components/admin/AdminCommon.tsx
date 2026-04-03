@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { put } from '@vercel/blob';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getAuth } from 'firebase/auth';
+import { app } from '../../firebase';
 
 // Reusable Input Field
 export const InputField: React.FC<{ label: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; color: any; name: string, type?: string }> = 
@@ -41,17 +43,48 @@ export const ImageUploadField: React.FC<{ label: string; imageUrl: string; onIma
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
+            console.log('Starting Firebase Storage upload for file:', file.name, 'Size:', file.size, 'Type:', file.type);
             setUploading(true);
+            
             try {
-                const blob = await put(file.name, file, {
-                    access: 'public',
-                    token: import.meta.env.VITE_BLOB_READ_WRITE_TOKEN,
-                });
-                onImageChange(blob.url);
+                console.log('Initializing Firebase Storage...');
+                // Temporarily removed auth check for testing
+                // const auth = getAuth(app);
+                // const user = auth.currentUser;
+                // if (!user) {
+                //     throw new Error('User not authenticated. Please log in to upload images.');
+                // }
+                // console.log('User authenticated:', user.email);
+
+                const storage = getStorage(app);
+                const storageRef = ref(storage, `images/${Date.now()}_${file.name}`);
+                
+                console.log('Storage ref created:', storageRef.fullPath);
+                console.log('Starting uploadBytes...');
+                
+                const snapshot = await uploadBytes(storageRef, file);
+                console.log('uploadBytes completed, snapshot:', snapshot);
+                
+                console.log('Getting download URL...');
+                const downloadURL = await getDownloadURL(snapshot.ref);
+                console.log('Download URL obtained:', downloadURL.substring(0, 50) + '...');
+                
+                onImageChange(downloadURL);
+                console.log('Upload process completed successfully');
+                
             } catch (error) {
-                console.error('Upload failed:', error);
-                alert('Upload failed. Please try again.');
+                console.error('Firebase Storage upload failed:', error);
+                
+                // More detailed error information
+                if (error instanceof Error) {
+                    console.error('Error name:', error.name);
+                    console.error('Error message:', error.message);
+                    console.error('Error stack:', error.stack);
+                }
+                
+                alert(`Upload failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
             } finally {
+                console.log('Setting uploading to false');
                 setUploading(false);
             }
         }

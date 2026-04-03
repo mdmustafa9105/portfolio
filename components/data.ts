@@ -55,7 +55,7 @@ export const data = {
       title: "I'm Mohammed Mustafa,",
       subtitle: "Multi domain learner",
       description: "I am a student focused on building discipline, fitness, and real world skills. I push myself through challenges to improve both mentally and physically. I am also exploring content creation to document my journey and growth. My goal is to become a well rounded, high performing individual.",
-      image: "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=1974&auto=format&fit=crop",
+      image: "Portfolioimage.png",
       tag1: "Idealogist",
       tag2: "Developer",
       spinner: "JACK OF ALL TRADES • MASTER OF NONE •"
@@ -71,7 +71,7 @@ export const data = {
         heading: 'Have a Look At My Projects',
         items: [
             { title: 'Pawbrulee', tags: ['Pet Rescue', 'SOS App'], imageUrl: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1974&auto=format&fit=crop', span: '', detailedDescription: 'Pawbrulee is a mobile application concept designed to connect pet owners with emergency veterinary services and create a community-based alert system for lost pets. The app features real-time location tracking and a network of volunteers.', demoUrl: 'https://pawbrulee.netlify.app', githubUrl: 'https://github.com' },
-            { title: 'Spendora', tags: ['AI', 'Expense Tracker'], imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1911&auto=format&fit=crop', span: '', detailedDescription: 'Spendora is an intelligent expense tracker that uses AI to categorize spending, identify trends, and provide personalized budget recommendations. It integrates with various financial institutions to automate transaction logging.', demoUrl: '#', githubUrl: 'https://github.com' },
+            { title: 'Spendora', tags: ['AI', 'Expense Tracker'], imageUrl: 'Portfolioimage6.jpeg', span: '', detailedDescription: 'Spendora is an intelligent expense tracker that uses AI to categorize spending, identify trends, and provide personalized budget recommendations. It integrates with various financial institutions to automate transaction logging.', demoUrl: '#', githubUrl: 'https://github.com' },
         ]
     },
     media: {
