@@ -52,7 +52,7 @@ export const data = {
     },
     hero: {
       greeting: "Hello There!",
-      title: "I'm Mohammed Mustafa,",
+      title: "Im Mohammed Mustafa,",
       subtitle: "Multi domain learner",
       description: "I am a student focused on building discipline, fitness, and real world skills. I push myself through challenges to improve both mentally and physically. I am also exploring content creation to document my journey and growth. My goal is to become a well rounded, high performing individual.",
       image: "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=1974&auto=format&fit=crop",
