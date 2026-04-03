@@ -15,9 +15,9 @@ const AdminAbout: React.FC<AdminAboutProps> = ({ mustafaData, hermesData, onUpda
     onUpdate(profile, 'about', { ...data, [e.target.name]: e.target.value });
   };
 
-  const handleImageChange = (profile: ProfileType, base64: string) => {
+  const handleImageChange = (profile: ProfileType, url: string) => {
     const data = profile === 'mustafa' ? mustafaData.about : hermesData.about;
-    onUpdate(profile, 'about', { ...data, image: base64 });
+    onUpdate(profile, 'about', { ...data, image: url });
   };
 
   const handleSkillChange = (profile: ProfileType, category: 'technical' | 'soft', index: number, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,10 +27,10 @@ const AdminAbout: React.FC<AdminAboutProps> = ({ mustafaData, hermesData, onUpda
     onUpdate(profile, 'about', { ...data, skills: newSkills });
   };
 
-  const handleSkillImageChange = (profile: ProfileType, category: 'technical' | 'soft', index: number, base64: string) => {
+  const handleSkillImageChange = (profile: ProfileType, category: 'technical' | 'soft', index: number, url: string) => {
     const data = profile === 'mustafa' ? mustafaData.about : hermesData.about;
     const newSkills = { ...data.skills };
-    newSkills[category][index] = { ...newSkills[category][index], iconUrl: base64 };
+    newSkills[category][index] = { ...newSkills[category][index], iconUrl: url };
     onUpdate(profile, 'about', { ...data, skills: newSkills });
   };
 
@@ -82,7 +82,7 @@ const AdminAbout: React.FC<AdminAboutProps> = ({ mustafaData, hermesData, onUpda
                       <ImageUploadField 
                           label={`Skill #${index + 1} Icon/Logo`} 
                           imageUrl={skill.iconUrl || ''} 
-                          onImageChange={(base64) => handleSkillImageChange(profile, category, index, base64)} 
+                          onImageChange={(url) => handleSkillImageChange(profile, category, index, url)} 
                           color={data.color} 
                       />
                   </div>
@@ -104,7 +104,7 @@ const AdminAbout: React.FC<AdminAboutProps> = ({ mustafaData, hermesData, onUpda
             <TextareaField label="Description 1" name="description1" value={mustafaData.about.description1} onChange={(e) => handleChange('mustafa', e)} color={mustafaData.color} rows={4} />
             <TextareaField label="Description 2" name="description2" value={mustafaData.about.description2} onChange={(e) => handleChange('mustafa', e)} color={mustafaData.color} rows={4} />
             <InputField label="Resume URL" name="resumeUrl" value={mustafaData.about.resumeUrl || ''} onChange={(e) => handleChange('mustafa', e)} color={mustafaData.color} />
-            <ImageUploadField label="About Image" imageUrl={mustafaData.about.image} onImageChange={(base64) => handleImageChange('mustafa', base64)} color={mustafaData.color} />
+            <ImageUploadField label="About Image" imageUrl={mustafaData.about.image} onImageChange={(url) => handleImageChange('mustafa', url)} color={mustafaData.color} />
             
             <div className="mt-6 pt-6 border-t border-gray-800 space-y-4">
                 {renderSkillsEditor('mustafa', mustafaData, 'technical')}
@@ -121,7 +121,7 @@ const AdminAbout: React.FC<AdminAboutProps> = ({ mustafaData, hermesData, onUpda
             <TextareaField label="Description 1" name="description1" value={hermesData.about.description1} onChange={(e) => handleChange('hermes', e)} color={hermesData.color} rows={4} />
             <TextareaField label="Description 2" name="description2" value={hermesData.about.description2} onChange={(e) => handleChange('hermes', e)} color={hermesData.color} rows={4} />
             <InputField label="Resume URL" name="resumeUrl" value={hermesData.about.resumeUrl || ''} onChange={(e) => handleChange('hermes', e)} color={hermesData.color} />
-            <ImageUploadField label="About Image" imageUrl={hermesData.about.image} onImageChange={(base64) => handleImageChange('hermes', base64)} color={hermesData.color} />
+            <ImageUploadField label="About Image" imageUrl={hermesData.about.image} onImageChange={(url) => handleImageChange('hermes', url)} color={hermesData.color} />
        
             <div className="mt-6 pt-6 border-t border-gray-800 space-y-4">
                 {renderSkillsEditor('hermes', hermesData, 'technical')}

@@ -22,10 +22,10 @@ const AdminAchievements: React.FC<AdminAchievementsProps> = ({ mustafaData, herm
     onUpdate(profile, 'achievements', { ...data, items: newItems });
   };
 
-  const handleImageChange = (profile: ProfileType, index: number, base64: string) => {
+  const handleImageChange = (profile: ProfileType, index: number, url: string) => {
     const data = profile === 'mustafa' ? mustafaData.achievements : hermesData.achievements;
     const newItems = [...data.items];
-    newItems[index] = { ...newItems[index], imageUrl: base64 };
+    newItems[index] = { ...newItems[index], imageUrl: url };
     onUpdate(profile, 'achievements', { ...data, items: newItems });
   };
 
@@ -72,7 +72,7 @@ const AdminAchievements: React.FC<AdminAchievementsProps> = ({ mustafaData, herm
                     <ImageUploadField 
                         label="Achievement Photo (Optional)" 
                         imageUrl={item.imageUrl || ''} 
-                        onImageChange={(base64) => handleImageChange(profile, index, base64)} 
+                        onImageChange={(url) => handleImageChange(profile, index, url)} 
                         color={data.color} 
                     />
                 </div>

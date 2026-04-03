@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { put } from '@vercel/blob';
 
 // Reusable Input Field
 export const InputField: React.FC<{ label: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; color: any; name: string, type?: string }> = 
@@ -33,20 +34,26 @@ export const TextareaField: React.FC<{ label: string; value: string; onChange: (
 );
 
 // Reusable Image Upload Field
-export const ImageUploadField: React.FC<{ label: string; imageUrl: string; onImageChange: (base64: string) => void; color: any; }> = 
+export const ImageUploadField: React.FC<{ label: string; imageUrl: string; onImageChange: (url: string) => void; color: any; }> = 
 ({ label, imageUrl, onImageChange, color }) => {
     const [uploading, setUploading] = useState(false);
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             setUploading(true);
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                onImageChange(reader.result as string);
+            try {
+                const blob = await put(file.name, file, {
+                    access: 'public',
+                    token: import.meta.env.VITE_BLOB_READ_WRITE_TOKEN,
+                });
+                onImageChange(blob.url);
+            } catch (error) {
+                console.error('Upload failed:', error);
+                alert('Upload failed. Please try again.');
+            } finally {
                 setUploading(false);
-            };
-            reader.readAsDataURL(file);
+            }
         }
     };
     

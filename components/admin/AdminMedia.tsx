@@ -22,10 +22,10 @@ const AdminMedia: React.FC<AdminMediaProps> = ({ mustafaData, hermesData, onUpda
     onUpdate(profile, 'media', { ...data, items: newItems });
   };
 
-  const handleImageChange = (profile: ProfileType, index: number, base64: string) => {
+  const handleImageChange = (profile: ProfileType, index: number, url: string) => {
     const data = profile === 'mustafa' ? mustafaData.media : hermesData.media;
     const newItems = [...data.items];
-    newItems[index] = { ...newItems[index], thumbnail: base64 };
+    newItems[index] = { ...newItems[index], thumbnail: url };
     onUpdate(profile, 'media', { ...data, items: newItems });
   };
   
@@ -71,7 +71,7 @@ const AdminMedia: React.FC<AdminMediaProps> = ({ mustafaData, hermesData, onUpda
                     <InputField label="Type (e.g. Video, Talk)" name="type" value={item.type} onChange={(e) => handleItemChange(profile, index, e)} color={data.color} />
                     <InputField label="Date" name="date" value={item.date} onChange={(e) => handleItemChange(profile, index, e)} color={data.color} />
                     <InputField label="Link URL" name="url" value={item.url} onChange={(e) => handleItemChange(profile, index, e)} color={data.color} />
-                    <ImageUploadField label="Thumbnail" imageUrl={item.thumbnail} onImageChange={(base64) => handleImageChange(profile, index, base64)} color={data.color} />
+                    <ImageUploadField label="Thumbnail" imageUrl={item.thumbnail} onImageChange={(url) => handleImageChange(profile, index, url)} color={data.color} />
                   </div>
                 ))}
             </div>

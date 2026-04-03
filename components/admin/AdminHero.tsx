@@ -14,9 +14,9 @@ const AdminHero: React.FC<AdminHeroProps> = ({ mustafaData, hermesData, onUpdate
     onUpdate(profile, 'hero', { ...data, [e.target.name]: e.target.value });
   };
 
-  const handleImageChange = (profile: ProfileType, base64: string) => {
+  const handleImageChange = (profile: ProfileType, url: string) => {
     const data = profile === 'mustafa' ? mustafaData.hero : hermesData.hero;
-    onUpdate(profile, 'hero', { ...data, image: base64 });
+    onUpdate(profile, 'hero', { ...data, image: url });
   };
 
   return (
@@ -33,7 +33,7 @@ const AdminHero: React.FC<AdminHeroProps> = ({ mustafaData, hermesData, onUpdate
             <TextareaField label="Description" name="description" value={mustafaData.hero.description} onChange={(e) => handleChange('mustafa', e)} color={mustafaData.color} />
             <InputField label="Tag 1" name="tag1" value={mustafaData.hero.tag1} onChange={(e) => handleChange('mustafa', e)} color={mustafaData.color} />
             <InputField label="Tag 2" name="tag2" value={mustafaData.hero.tag2} onChange={(e) => handleChange('mustafa', e)} color={mustafaData.color} />
-            <ImageUploadField label="Hero Image" imageUrl={mustafaData.hero.image} onImageChange={(base64) => handleImageChange('mustafa', base64)} color={mustafaData.color} />
+            <ImageUploadField label="Hero Image" imageUrl={mustafaData.hero.image} onImageChange={(url) => handleImageChange('mustafa', url)} color={mustafaData.color} />
         </div>
 
         {/* Hermes Column */}
@@ -46,7 +46,7 @@ const AdminHero: React.FC<AdminHeroProps> = ({ mustafaData, hermesData, onUpdate
             <TextareaField label="Description" name="description" value={hermesData.hero.description} onChange={(e) => handleChange('hermes', e)} color={hermesData.color} />
             <InputField label="Tag 1" name="tag1" value={hermesData.hero.tag1} onChange={(e) => handleChange('hermes', e)} color={hermesData.color} />
             <InputField label="Tag 2" name="tag2" value={hermesData.hero.tag2} onChange={(e) => handleChange('hermes', e)} color={hermesData.color} />
-            <ImageUploadField label="Hero Image" imageUrl={hermesData.hero.image} onImageChange={(base64) => handleImageChange('hermes', base64)} color={hermesData.color} />
+            <ImageUploadField label="Hero Image" imageUrl={hermesData.hero.image} onImageChange={(url) => handleImageChange('hermes', url)} color={hermesData.color} />
         </div>
       </div>
     </div>

@@ -91,9 +91,9 @@ const AdminBlog: React.FC<AdminBlogProps> = ({ mustafaData, hermesData, onUpdate
         setEditingPost({...editingPost, [name]: value});
     }
   }
-   const handlePostImageChange = (base64: string) => {
+   const handlePostImageChange = (url: string) => {
     if (!editingPost) return;
-    setEditingPost({...editingPost, imageUrl: base64});
+    setEditingPost({...editingPost, imageUrl: url});
   }
 
   const handleGenerateIdeas = async () => {

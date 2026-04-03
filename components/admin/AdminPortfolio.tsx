@@ -28,7 +28,7 @@ const AdminPortfolio: React.FC<AdminPortfolioProps> = ({ mustafaData, hermesData
     onUpdate(profile, 'portfolio', { ...data, items: newItems });
   };
 
-  const handleImageChange = (profile: ProfileType, index: number, base64: string) => {
+  const handleImageChange = (profile: ProfileType, index: number, url: string) => {
     const data = profile === 'mustafa' ? mustafaData.portfolio : hermesData.portfolio;
     const newItems = [...data.items];
     newItems[index] = { ...newItems[index], imageUrl: base64 };
@@ -80,7 +80,7 @@ const AdminPortfolio: React.FC<AdminPortfolioProps> = ({ mustafaData, hermesData
                     <InputField label="Live Demo URL" name="demoUrl" value={item.demoUrl || ''} onChange={(e) => handleItemChange(profile, index, e)} color={data.color} />
                     <InputField label="GitHub URL" name="githubUrl" value={item.githubUrl || ''} onChange={(e) => handleItemChange(profile, index, e)} color={data.color} />
                     <InputField label="Grid Span Class (optional)" name="span" value={item.span} onChange={(e) => handleItemChange(profile, index, e)} color={data.color} />
-                    <ImageUploadField label="Project Image" imageUrl={item.imageUrl} onImageChange={(base64) => handleImageChange(profile, index, base64)} color={data.color} />
+                    <ImageUploadField label="Project Image" imageUrl={item.imageUrl} onImageChange={(url) => handleImageChange(profile, index, url)} color={data.color} />
                 </div>
             ))}
         </div>

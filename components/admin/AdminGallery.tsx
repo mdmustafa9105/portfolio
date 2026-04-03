@@ -22,10 +22,10 @@ const AdminGallery: React.FC<AdminGalleryProps> = ({ mustafaData, hermesData, on
     onUpdate(profile, 'gallery', { ...data, items: newItems });
   };
 
-  const handleImageChange = (profile: ProfileType, index: number, base64: string) => {
+  const handleImageChange = (profile: ProfileType, index: number, url: string) => {
     const data = profile === 'mustafa' ? mustafaData.gallery : hermesData.gallery;
     const newItems = [...data.items];
-    newItems[index] = { ...newItems[index], imageUrl: base64 };
+    newItems[index] = { ...newItems[index], imageUrl: url };
     onUpdate(profile, 'gallery', { ...data, items: newItems });
   };
   
@@ -65,7 +65,7 @@ const AdminGallery: React.FC<AdminGalleryProps> = ({ mustafaData, hermesData, on
                         <button onClick={() => handleRemoveItem(profile, index)} className="text-red-500 hover:text-red-400 font-semibold text-sm">Remove</button>
                     </div>
                     <InputField label="Title" name="title" value={item.title} onChange={(e) => handleItemChange(profile, index, e)} color={data.color} />
-                    <ImageUploadField label="Image" imageUrl={item.imageUrl} onImageChange={(base64) => handleImageChange(profile, index, base64)} color={data.color} />
+                    <ImageUploadField label="Image" imageUrl={item.imageUrl} onImageChange={(url) => handleImageChange(profile, index, url)} color={data.color} />
                   </div>
                 ))}
             </div>
