@@ -1,0 +1,12 @@
+VITE_FIREBASE_API_KEY=AIzaSyBwS0ikFrcsAzNb84qcp9z9rYV9bJkdFEw
+VITE_FIREBASE_AUTH_DOMAIN=mdmustafa-portfolio.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=mdmustafa-portfolio
+VITE_FIREBASE_STORAGE_BUCKET=mdmustafa-portfolio.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=431503823618
+VITE_FIREBASE_APP_ID=1:431503823618:web:154c69b41251dda592e81b
+VITE_FIREBASE_MEASUREMENT_ID=G-W5DVPRKSC3
+
+# Comma-separated list of allowed admin emails
+VITE_ADMIN_EMAIL=mhdmustafa9105@gmail.com,tanveerfb@gmail.com
+
+GEMINI_API_KEY=
