@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A dual-identity personal portfolio for Mohammed Mustafa, a BTech CSE Cybersecurity student, and his creative persona, Kaptaan Hermes. Explore services in web development, design, and content creation." />
+    <meta name="keywords" content="Mohammed Mustafa, Kaptaan Hermes, Portfolio, BTech CSE, Cybersecurity, Web Development, UI/UX Design, Game Development, Content Creator, Streamer, Tez Army" />
+    <meta name="author" content="Mohammed Mustafa" />
+    <meta property="og:title" content="Mohammed Mustafa | Kaptaan Hermes - Portfolio" />
+    <meta property="og:description" content="Discover the professional and creative worlds of Mohammed Mustafa and Kaptaan Hermes. Web development, cybersecurity, and digital content creation." />
+    <meta property="og:type" content="website" />
+    <title>Mohammed Mustafa | Kaptaan Hermes - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+      }
+      .marquee-content {
+        display: flex;
+        animation: marquee 25s linear infinite;
+        will-change: transform;
+      }
+      @keyframes marquee {
+        from { transform: translateX(0%); }
+        to { transform: translateX(-50%); }
+      }
+      .spinner {
+        animation: spin 10s linear infinite;
+      }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .fade-in {
+        animation: fadeIn 0.5s ease-in-out;
+      }
+      .gallery-slider {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+      .gallery-slider::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+      .gallery-slider.active {
+        cursor: grabbing;
+        cursor: -webkit-grabbing;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
