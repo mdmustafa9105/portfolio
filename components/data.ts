@@ -53,7 +53,7 @@ export const data = {
     hero: {
       greeting: "Hello There!",
       title: "I'm Mohammed Mustafa,",
-      subtitle: "Multi domain learner",
+      subtitle: "A Multi Domain Learner",
       description: "I am a student focused on building discipline, fitness, and real world skills. I push myself through challenges to improve both mentally and physically. I am also exploring content creation to document my journey and growth. My goal is to become a well rounded, high performing individual.",
       image: "Portfolioimage.png",
       tag1: "Idealogist",
